@@ -2,30 +2,33 @@ body {
     font-family: sans serif;
 }
 
-tbody {
+#events {
     font-family: monospace;
     font-size: 10pt;
 }
 
+#events > p {
+    margin: 0;
+}
 
 .warn {
     background-color: #ffeedd;
-    color: #221100;
+    color: #aa5500;
 }
 
 .info {
     background-color: #ddffdd;
-    color: #002200;
+    color: #00aa00;
 }
 
 .log {
     background-color: #ddddff;
-    color: #000022;
+    color: #0000aa;
 }
 
 .error {
     background-color: #ffdddd;
-    color: #220000;
+    color: #aa0000;
     font-weight: bold;
 }
 

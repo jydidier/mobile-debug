@@ -1,23 +1,23 @@
-var elt = document.getElementById('');
 
-
-function handleMessage(event) {
+function handleMessage(message, sender) {
+    var p = document.createElement('p');
+    
+    p.classList.add(message.type);
+    
+    if (message.type === "exception") {
+        var contents = message.args.msg + ' ' + message.args.url + ':' + message.args.line + ':' + message.args.column;
+    } else {
+        var contents = '';
+        var arg;
+        for(arg in message.args) {
+            contents += message.args[arg] + ' ' + message.context;
+        }
+    }
+       
+    p.innerHTML = contents;
+    document.getElementById('events').appendChild(p);
     
 }
 
-
-
-
-browser.tabs.executeScript(null, {
-    file: '/content_script/mobile-debug.js'
-});
-
-// send message in order to start and synchronize data
-browser.tabs.query({ active: true, currentWindow: true}).then(
-    function(tabs) {
-        browser.tabs.sendMessage(tabs[0].id, { start: true });
-    }
-);
-
-// handle messages
-window.addEventListener('message', handleMessage, false);
+browser.runtime.onMessage.addListener(handleMessage);
+console.log('toto');

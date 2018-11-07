@@ -13,8 +13,12 @@
 
     "permissions": [ "activeTab" ],
 
+    "background" : {
+        "scripts": [ "/scripts/mobile-debug.js" ]
+    },
+
     "browser_action": {
-        "default_title": "Mobile debug",
-        "default_popup": "/popup/console.html"
+        "default_title" : "Mobile debug"
     }
+
 }
