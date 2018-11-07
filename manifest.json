@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Mobile debug",
+    "version": "0.1",
+    
+    "description": "Adds a console output tab to Firefox mobile",
+
+    "applications": {
+        "gecko": {
+            "id": "mobile-debug@red-id.net"
+        }
+    },
+
+    "permissions": [ "activeTab" ],
+
+    "browser_action": {
+        "default_title": "Mobile debug",
+        "default_popup": "/popup/console.html"
+    }
+}

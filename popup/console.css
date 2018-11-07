@@ -1,0 +1,36 @@
+body {
+    font-family: sans serif;
+}
+
+tbody {
+    font-family: monospace;
+    font-size: 10pt;
+}
+
+
+.warn {
+    background-color: #ffeedd;
+    color: #221100;
+}
+
+.info {
+    background-color: #ddffdd;
+    color: #002200;
+}
+
+.log {
+    background-color: #ddddff;
+    color: #000022;
+}
+
+.error {
+    background-color: #ffdddd;
+    color: #220000;
+    font-weight: bold;
+}
+
+.exception {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+}
