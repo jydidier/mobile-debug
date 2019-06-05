@@ -2,6 +2,9 @@
     "manifest_version": 2,
     "name": "Mobile debug",
     "version": "0.1",
+    "icons" : {
+        "48" : "/icons/active_debug.svg"
+    },
     
     "description": "Adds a console output tab to Firefox mobile",
 
@@ -11,13 +14,17 @@
         }
     },
 
-    "permissions": [ "activeTab" ],
+    "permissions": [ "activeTab", "webNavigation" ],
+
+    "content_scripts": [ { "matches": [ "http://*/*", "https://*/*" ], "js": [ "content_scripts/mobile-debug.js" ], "run_at": "document_end" } ],
+
 
     "background" : {
         "scripts": [ "/scripts/mobile-debug.js" ]
     },
 
     "browser_action": {
+        "default_icon" : "/icons/disabled_debug.svg",
         "default_title" : "Mobile debug"
     }
 

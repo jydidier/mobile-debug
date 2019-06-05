@@ -23,24 +23,41 @@ var MobileConsole = {
         browser.runtime.sendMessage({type: "error", args: Array.from(arguments),context: MobileConsole.currentPlace()});
     },
 
-    exception : function(msg, url, line, column) {
+    runtimeException : function(msg, url, line, column,err) {
         browser.runtime.sendMessage({type: "exception", args: { message: msg, url: url, line: line, column: column } });
+        return false;
+    },
+    
+    errorException : function() {
+        
     }
+    
 };
 
-console.log   = MobileConsole.log;
 
-console.error = MobileConsole.error;
+exportFunction(MobileConsole.log, window.console, {defineAs : 'log'});
+exportFunction(MobileConsole.error, window.console, {defineAs : 'error'});
+exportFunction(MobileConsole.warn, window.console, {defineAs: 'warn'});
+exportFunction(MobileConsole.info, window.console, {defineAs: 'info'});
+exportFunction(MobileConsole.runtimeException, window, {defineAs: 'onerror'});
+
+/*console.error = MobileConsole.error;
 console.warn  = MobileConsole.warn;
 console.info  = MobileConsole.info;
 
-window.onerror = MobileConsole.exception;
+window.onerror = MobileConsole.runtimeException;
 
 console.log('test');
 console.info('all is good');
 console.warn('attention');
 console.error('gruick');
-toto.guick();
 
+console.touched = 'JY Didier';
+
+
+setTimeout(function() {
+toto();
+}, 200);
 
 undefined;
+*/
